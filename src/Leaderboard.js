@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+const API_BASE_URL = "http://localhost:8080"; // Replace with your backend URL
 const IMAGE_BASE_URL = "https://ddragon.leagueoflegends.com/cdn/15.5.1/img/champion/";
 
 const Leaderboard = () => {
@@ -13,7 +14,7 @@ const Leaderboard = () => {
 
     const fetchLeaderboard = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/leaderboard`);
+            const response = await axios.get(`${API_BASE_URL}/leaderboard`);
             setCharacters(response.data);
         } catch (error) {
             console.error("Error fetching leaderboard:", error);
@@ -27,29 +28,31 @@ const Leaderboard = () => {
     return (
         <div style={styles.container}>
             <h1 style={styles.title}>Leaderboard</h1>
-            <table style={styles.table}>
-                <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Rating</th>
-                </tr>
-                </thead>
-                <tbody>
-                {characters.map((char) => {
-                    const imageName = char.name === "Wukong" ? "MonkeyKing" : char.name;
-                    return (
-                        <tr key={char.name}>
-                            <td>
-                                <img src={`${IMAGE_BASE_URL}${imageName}.png`} alt={char.name} style={styles.image} />
-                            </td>
-                            <td>{char.name}</td>
-                            <td>{char.rating}</td>
-                        </tr>
-                    );
-                })}
-                </tbody>
-            </table>
+            <div style={styles.tableWrapper}>
+                <table style={styles.table}>
+                    <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Rating</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {characters.map((char) => {
+                        const imageName = char.name === "Wukong" ? "MonkeyKing" : char.name;
+                        return (
+                            <tr key={char.name} style={styles.tableRow}>
+                                <td style={styles.cell}>
+                                    <img src={`${IMAGE_BASE_URL}${imageName}.png`} alt={char.name} style={styles.image} />
+                                </td>
+                                <td style={styles.cell}>{char.name}</td>
+                                <td style={styles.cell}>{char.rating}</td>
+                            </tr>
+                        );
+                    })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
@@ -59,7 +62,7 @@ const styles = {
     container: {
         textAlign: "center",
         fontFamily: "Arial, sans-serif",
-        padding: "10px",
+        paddingTop: "10px",
         backgroundColor: "#121212",
         color: "#fff",
         minHeight: "100vh",
@@ -69,23 +72,28 @@ const styles = {
     },
     title: {
         fontSize: "40px",
-        marginBottom: "10px",
+        marginBottom: "30px",
+    },
+    tableWrapper: {
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
     },
     table: {
-        width: "50%",
+        width: "25%",
         borderCollapse: "collapse",
-        marginTop: "10px",
+        marginTop: "5px",
     },
     tableRow: {
         borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
     },
     cell: {
         fontSize: "20px",
-        padding: "5px 10px",
+        padding: "5px",
         textAlign: "center",
     },
     image: {
-        width: "70px", 
+        width: "70px",
         height: "70px",
         borderRadius: "5px",
     },
