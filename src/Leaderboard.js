@@ -26,7 +26,7 @@ const Leaderboard = () => {
 
     return (
         <div style={styles.container}>
-            <h1 style={styles.title}>Champion Leaderboard</h1>
+            <h1 style={styles.title}>Leaderboard</h1>
             <table style={styles.table}>
                 <thead>
                 <tr>
@@ -59,34 +59,38 @@ const styles = {
     container: {
         textAlign: "center",
         fontFamily: "Arial, sans-serif",
-        padding: "20px",
+        padding: "10px",
         backgroundColor: "#121212",
         color: "#fff",
         minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
     },
     title: {
-        fontSize: "50px", // Bigger title
-        marginBottom: "20px",
+        fontSize: "40px",
+        marginBottom: "10px",
     },
     table: {
-        width: "60%", // More compact width
-        margin: "0 auto",
+        width: "50%",
         borderCollapse: "collapse",
+        marginTop: "10px",
     },
     tableRow: {
-        borderBottom: "2px solid rgba(255, 255, 255, 0.2)", // Slight separator
+        borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+    },
+    cell: {
+        fontSize: "20px",
+        padding: "5px 10px",
+        textAlign: "center",
     },
     image: {
-        width: "80px", // Bigger images
-        height: "80px",
+        width: "70px", 
+        height: "70px",
         borderRadius: "5px",
     },
-    text: {
-        fontSize: "24px", // Bigger text
-        padding: "10px 15px", // Less spacing
-    },
     loading: {
-        fontSize: "32px",
+        fontSize: "24px",
         textAlign: "center",
         color: "#ffffff",
     },
