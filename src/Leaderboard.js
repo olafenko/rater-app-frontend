@@ -54,7 +54,7 @@ const Leaderboard = () => {
     );
 };
 
-// Styles
+
 const styles = {
     container: {
         textAlign: "center",
@@ -65,21 +65,28 @@ const styles = {
         minHeight: "100vh",
     },
     title: {
-        fontSize: "40px",
+        fontSize: "50px", // Bigger title
         marginBottom: "20px",
     },
     table: {
-        width: "80%",
+        width: "60%", // More compact width
         margin: "0 auto",
         borderCollapse: "collapse",
     },
+    tableRow: {
+        borderBottom: "2px solid rgba(255, 255, 255, 0.2)", // Slight separator
+    },
     image: {
-        width: "50px",
-        height: "50px",
+        width: "80px", // Bigger images
+        height: "80px",
         borderRadius: "5px",
     },
+    text: {
+        fontSize: "24px", // Bigger text
+        padding: "10px 15px", // Less spacing
+    },
     loading: {
-        fontSize: "24px",
+        fontSize: "32px",
         textAlign: "center",
         color: "#ffffff",
     },
