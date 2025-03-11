@@ -54,6 +54,8 @@ const App = () => {
                 {["firstId", "secondId"].map((key) => {
                     const champId = battle[key];
                     const champName = championsMap[champId] || "Unknown";
+
+                    const champImageName = champName === "Wukong" ? "MonkeyKing" : champName;
                     return (
                         <div
                             key={champId}
@@ -65,7 +67,7 @@ const App = () => {
                             }}
                         >
                             <h2 style={styles.champName}>{champName}</h2>
-                            <img src={`${IMAGE_BASE_URL}${champName}.png`} alt={champName} style={styles.image} />
+                            <img src={`${IMAGE_BASE_URL}${champImageName}.png`} alt={champName} style={styles.image} />
                             <div style={styles.buttonWrapper}>
                                 <button style={styles.button} onClick={() => submitAnswer(champId)}>
                                     CHOOSE
