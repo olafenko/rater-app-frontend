@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Battle from "./Battle";
 import Leaderboard from "./Leaderboard";
 
 const App = () => {
     const [view, setView] = useState("battle");
+    useEffect(() => {
+        document.title = "Lol Champ Rater";
+    }, []);
 
     return (
         <div style={styles.container}>
-
             <nav style={styles.navbar}>
                 <button onClick={() => setView("battle")} style={styles.navButton}>Battle</button>
                 <button onClick={() => setView("leaderboard")} style={styles.navButton}>Leaderboard</button>
